@@ -80,3 +80,26 @@ int ArrayData::getCount()
 {
 	return count;
 }
+
+double& ArrayData::operator[](int index)
+{
+	if (index < capacity) {
+		return data[index];
+	}
+	else {
+		cout << "인덱스 참조 오류" << endl;
+		exit(0);
+	}
+}
+
+void ArrayData::operator=(const ArrayData& copy)
+{
+	used = copy.used;
+	if (capacity != copy.capacity) {
+		capacity = copy.capacity;
+		delete[] data;	//기존 capacity를 없애줌
+		data = new double[capacity];	//새롭게 업데이트
+	}
+	for (int i = 0; i < used; i++)
+		data[i] = copy.data[i];
+}

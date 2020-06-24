@@ -1,7 +1,7 @@
 #pragma once
 class ArrayData
 {
-private:
+protected:
 	double* data;
 	int capacity;
 	int used;
@@ -20,5 +20,7 @@ public:
 	ArrayData getObject();
 	friend double getArraySum(const ArrayData& arr);	//특별히 private 멤버 접근 허용해주고 싶을 때
 	static int getCount();	//static int count에 접근하기 위해 함수를 static으로 선언
+	double& operator[](int index);
+	void operator=(const ArrayData& copy);	//얕은 복사를 피하기 위해 만들어줌
 };
 
