@@ -28,3 +28,13 @@ bool Item::operator==(const Item& copy)
 {
 	return id == copy.id && price == copy.price;
 }
+
+bool Item::operator<(const Item& i) const
+{
+	return id < i.id;
+}
+
+bool Item::operator>(const Item& i) const
+{
+	return id > i.id;
+}
